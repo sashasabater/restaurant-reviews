@@ -1,6 +1,15 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 data/yelp.csv filter=lfs diff=lfs merge=lfs -text
 data/ filter=lfs diff=lfs merge=lfs -text
 =======
 *.ipynb lingist-language=Python
 >>>>>>> 6459fa0f26f18d06f00409bab660018fd26206b3
+=======
+<<<<<<< HEAD
+data/yelp.csv filter=lfs diff=lfs merge=lfs -text
+data/ filter=lfs diff=lfs merge=lfs -text
+=======
+*.ipynb linguist-language=Python
+>>>>>>> 6459fa0f26f18d06f00409bab660018fd26206b3
+>>>>>>> 1a570b20186c524dd95d1db268aae5a155e579a9
