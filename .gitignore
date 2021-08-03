@@ -1,2 +1,3 @@
 *.ipynb_checkpoints
 *data/yelp.csv 
+*__pycache__
