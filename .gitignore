@@ -1,3 +1,4 @@
 *.ipynb_checkpoints
 *data/yelp.csv 
 *__pycache__
+*src/rm_model.pkl
