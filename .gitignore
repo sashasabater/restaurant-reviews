@@ -2,3 +2,4 @@
 *data/yelp.csv 
 *__pycache__
 *src/rm_model.pkl
+*.DS_Store
