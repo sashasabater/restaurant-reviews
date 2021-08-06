@@ -2,6 +2,9 @@ import pandas as pd
 from nltk.corpus import stopwords
 from nltk.stem.wordnet import WordNetLemmatizer
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
+from keras.preprocessing.text import Tokenizer
+from keras.preprocessing.sequence import pad_sequences
+
 
 
 class TextPrep:
@@ -9,8 +12,11 @@ class TextPrep:
     def __init__(self, df):
         #initialize with dataframe
         self.df = df
+        self.documents = []
+        self.feature_names = []
     
     def vectorize(self,column, method='tfidf'):
+        self.target = column
         #takes in name of column to be cleaned, and method to vectorize
         lem = WordNetLemmatizer()
         #lemmatizing as opposed to stemming 
@@ -26,11 +32,21 @@ class TextPrep:
         if method == 'tfidf':
             vectorizer = TfidfVectorizer(stop_words='english', max_features=5000)
             vectorized = vectorizer.fit_transform(self.documents).toarray()
+            self.feature_names = vectorizer.get_feature_names()
             return vectorized
             #creating a feature names attribute(bag of words)
         elif method == 'count':
             vectorizer = CountVectorizer(stop_words='english', max_features=5000)
             vectorized = vectorizer.fit_transform(self.documents).toarray()
+            self.feature_names = vectorizer.get_feature_names()
+            return vectorized
+        elif method == 'token':
+            puncs = '!"#$%&()*+,-./:;<=>?@[\]^_`{|}~'
+            vectorizer = Tokenizer(num_words=50000, filters =puncs, lower=True)
+            vectorizer.fit_on_texts(self.df[self.target].values)
+            self.feature_names = vectorizer.word_index
+            vectorized = vectorizer.texts_to_sequences(self.df[self.target].values)
+            vectorized = pad_sequences(vectorized, maxlen=250)
             return vectorized
             #returns final vectorized feature matrix for modeling 
     
