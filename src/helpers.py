@@ -33,6 +33,8 @@ def calc_scores(y_true, y_predict):
     return [precision, accuracy, recall]
 
 def check_class_balance(df, column, labels):
+    #column parameter is the column name of the target
+    #label paremeter is a list of class labels
     total = len(df)
     classes = {'total':total}
     for i, label in enumerate(labels):
