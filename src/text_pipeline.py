@@ -13,7 +13,9 @@ class TextPrep:
         #initialize with dataframe
         self.df = df
         self.documents = []
+        #creating a documents attribute
         self.feature_names = []
+        #creating a feature names attribute(bag of words)
     
     def vectorize(self,column, method='tfidf'):
         self.target = column
@@ -25,7 +27,7 @@ class TextPrep:
         for doc in self.df[column].values:
             cleaned = [lem.lemmatize(word).lower() for word in doc.split(' ') \
                        if word not in s_words and word.isalpha() == True]
-            #making sure that every word onl
+            #making sure that every word only has letters
             texts.append(' '.join(cleaned))
         self.documents = texts 
   
@@ -34,7 +36,7 @@ class TextPrep:
             vectorized = vectorizer.fit_transform(self.documents).toarray()
             self.feature_names = vectorizer.get_feature_names()
             return vectorized
-            #creating a feature names attribute(bag of words)
+            
         elif method == 'count':
             vectorizer = CountVectorizer(stop_words='english', max_features=5000)
             vectorized = vectorizer.fit_transform(self.documents).toarray()
