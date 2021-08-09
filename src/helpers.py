@@ -24,9 +24,9 @@ def prepare_df(df):
     return df
 
 def calc_scores(y_true, y_predict):
-    precision = precision_score(y_true, y_predict,average='micro')
+    precision = precision_score(y_true, y_predict,average='macro')
     accuracy = accuracy_score(y_true, y_predict)
-    recall = recall_score(y_true, y_predict, average='micro')
+    recall = recall_score(y_true, y_predict, average='macro')
     print(f'Precision : {precision} \n'  
           f'Accuracy : {accuracy} \n'
          f'Recall: {recall}')
