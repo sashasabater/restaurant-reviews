@@ -19,9 +19,7 @@ Next I defined a (Pythonic) class to handle both cleaning (removing stopwords an
 
 
 ## Modeling and Results 
-I began with a baseline of random choice(if each class had equal probability of being predicted). Then, since I had such a class imbalance: 
-
-
+I began with a baseline of random choice(if each class had equal probability of being predicted). Then, since I had such a class imbalance, I decided to undersample the majority class so that all the classes would be evenly distributed for my training sets, but did not perform undersampling for the testing sets. 
 
 Logistic Regression, then Random Forest, etc. 
 (Show table of Precision/Recall/Accuracy for all models) 
