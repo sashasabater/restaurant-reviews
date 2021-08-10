@@ -15,12 +15,15 @@ After exploring, I noticed quite a class imbalance for the star ratings:
 
 I decided to consolidate my classes to three: 1 = Bad Review, 2 = Neutral, 3 = Good Review. I grouped together 1-2 stars to class 1, 3 stars to class 2, and 4-5 stars to class 3. Still; there is a class imbalance, but that can be addressed when modeling.
 
-Next I developed a class to handle both cleaning (removing stopwords and/or non-alphabetic characters) and vectorizing the 'text' column of the dataframe. This class is defined in 'text_pipeline.py' and can be found in the src folder of this repo.
+Next I defined a (Pythonic) class to handle both cleaning (removing stopwords and/or non-alphabetic characters) and vectorizing the 'text' column of the dataframe. This class is defined in 'text_pipeline.py' and can be found in the src folder of this repo.
 
- 
 
 ## Modeling and Results 
-Placeholder description of modeling process. Started with baseline by predicting the mode for each entry. Logistic Regression, then Random Forest, etc. 
+I began with a baseline of random choice(if each class had equal probability of being predicted). Then, since I had such a class imbalance: 
+
+
+
+Logistic Regression, then Random Forest, etc. 
 (Show table of Precision/Recall/Accuracy for all models) 
 
 ## Next Steps / Future Discussion 
