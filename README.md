@@ -21,7 +21,7 @@ Next I defined a (Pythonic) class to handle both cleaning (removing stopwords an
 ## Modeling and Results 
 I began with a baseline of random choice(if each class had equal probability of being predicted). Then, since I had such a class imbalance, and I wanted to avoid strictly predicting the majority class, I decided to undersample the majority class so that all the classes would be evenly distributed for my training sets, but did not perform undersampling for the testing sets. However, this undersampling method resulted in some evident overfitting in Logistic Regression, Random Forest and Gradient Boosting models, which can be seen below. 
 
-![Sampled Result](./sampled-results.png)
+![Sampled Result](./img/sampled-results.png)
 
 
 
