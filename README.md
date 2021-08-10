@@ -31,7 +31,7 @@ The LSTM model had the highest performance for both training and testing, but on
 
 ![Confusion Matrix](./img/matrix.png)
 
-We can see that the majority of the actual 'Good' reviews were predicted to be 'Good' by the LSTM model. However, we can also see that the model typically mostly predicted 'Good' in general. For the purpose of this project, false 'good' reviews are worse than false 'bad' reviews: an actually badly rated restaurant with a false good review is less costly and in fact beneficial to the badly rated restaurant. However, a consistetly well rated restaurant receiving falsly classified bad reviews would be more detrimental, both for the business's reputation (and their faith in the model). Again, we have a class imbalance dilemma.
+We can see that the majority of the actual 'Good' reviews were predicted to be 'Good' by the LSTM model. However, we can also see that the model typically mostly predicted 'Good' in general. For the purpose of this project, false 'bad' reviews are worse than false 'good' reviews: an actually badly rated restaurant with a false good review is less costly and in fact beneficial to the badly rated restaurant. However, a consistetly well rated restaurant receiving falsly classified bad reviews would be more detrimental, both for the business's reputation (and their faith in the model). 
 
 
 ## Next Steps / Future Discussion 
