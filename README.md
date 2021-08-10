@@ -23,7 +23,20 @@ I began with a baseline of random choice(if each class had equal probability of 
 
 ![Sampled Result](./img/sampled-results.png)
 
+I then decided to try out these models (with the exception of Gradient Boosting), as well as a Recurrent Neural Network with LSTM to better capture the sequential nature of the text, without undersampling for the class imbalance. It resolved my overfitting issue, (except for in the case of LSTM).
+
+![Un-sample Results](./img/raw-results.png)
+
+The LSTM model had the highest performance for both training and testing, but one can argue it is also the most overfit. Taking a look at the confusion matrix: 
+
+![Confusion Matrix](./img/matrix.png)
+
+We can see that the majority of the actual 'Good' reviews were predicted to be 'Good' by the LSTM model. However, we can also see that the model typically mostly predicted 'Good' in general. For the purpose of this project, false 'good' reviews are worse than false 'bad' reviews: an actually badly rated restaurant with a false good review is less costly and in fact beneficial to the badly rated restaurant. However, a consistetly well rated restaurant receiving falsly classified bad reviews would be more detrimental, both for the business's reputation (and their faith in the model). Again, we have a class imbalance dilemma.
 
 
 ## Next Steps / Future Discussion 
-Placeholder for next steps / application and deployment. 
+In order to subdue overfitting and increase model performance, my next steps will be to find a more optimal way of addressing the class imbalance while modeling. Overfitting was rampant when I undersampled the training set, but it was also rampant in the LSTM model, even with a relatively high rate of recurrent dropouts in the neural network infrastructure. 
+
+Additionally, next steps can also include some feature decomposition / topic modeling. Maybe instead of only using the vectorized documents to train a model, a minimized feature space that retains the same amount of information can help prevent the model fitting the data points so granularly, giving our model higher bias. 
+
+
