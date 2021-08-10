@@ -35,7 +35,9 @@ We can see that the majority of the actual 'Good' reviews were predicted to be '
 
 
 ## Next Steps / Future Discussion 
-While this LSTM model is a good start, in order to subdue overfitting and increase model performance, my next steps will be to find a more optimal way of addressing the class imbalance while modeling. Overfitting was rampant when I undersampled the training set, but it was also rampant in the LSTM model, even with a relatively high rate of recurrent dropouts in the neural network infrastructure. 
+While this LSTM model is a good start, in order to subdue overfitting and increase model performance, my next steps will be to find a more optimal way of addressing the class imbalance while modeling. Overfitting was rampant when I undersampled the training set, but it was also rampant in the LSTM model, even with a relatively high rate of recurrent dropouts in the neural network infrastructure. Furthermore, overfitting could be eased by early stopping when training the LSTM model. Below we can see that at only the second epoch, the model's test performance begins to plateau.
+
+![Accuracy Plot](./img/accr.png)
 
 Additionally, next steps can also include some feature decomposition / topic modeling. Maybe instead of only using the vectorized documents to train a model, a minimized feature space that retains the same amount of information can help prevent the model fitting the data points so granularly, giving our model higher bias. 
 
