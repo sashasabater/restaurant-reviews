@@ -19,10 +19,26 @@ Next I defined a (Pythonic) class to handle both cleaning (removing stopwords an
 
 
 ## Modeling and Results 
-I began with a baseline of random choice(if each class had equal probability of being predicted). Then, since I had such a class imbalance, I decided to undersample the majority class so that all the classes would be evenly distributed for my training sets, but did not perform undersampling for the testing sets. 
+I began with a baseline of random choice(if each class had equal probability of being predicted). Then, since I had such a class imbalance, and I wanted to avoid strictly predicting the majority class, I decided to undersample the majority class so that all the classes would be evenly distributed for my training sets, but did not perform undersampling for the testing sets. However, this undersampling method resulted in some evident overfitting in Logistic Regression, Random Forest and Gradient Boosting models, which can be seen below. 
 
-Logistic Regression, then Random Forest, etc. 
-(Show table of Precision/Recall/Accuracy for all models) 
+![Sampled Result](./img/sampled-results.png)
+
+I then decided to try out these models (with the exception of Gradient Boosting), as well as a Recurrent Neural Network with LSTM to better capture the sequential nature of the text, without undersampling for the class imbalance. It resolved my overfitting issue, (except for in the case of LSTM).
+
+![Un-sample Results](./img/raw-results.png)
+
+The LSTM model had the highest performance for both training and testing, but one can argue it is also the most overfit. Taking a look at the confusion matrix: 
+
+![Confusion Matrix](./img/matrix.png)
+
+We can see that the majority of the actual 'Good' reviews were predicted to be 'Good' by the LSTM model. However, we can also see that the model typically mostly predicted 'Good' in general. For the purpose of this project, false 'good' reviews are worse than false 'bad' reviews: an actually badly rated restaurant with a false good review is less costly and in fact beneficial to the badly rated restaurant. However, a consistetly well rated restaurant receiving falsly classified bad reviews would be more detrimental, both for the business's reputation (and their faith in the model). Again, we have a class imbalance dilemma.
+
 
 ## Next Steps / Future Discussion 
-Placeholder for next steps / application and deployment. 
+While this LSTM model is a good start, in order to subdue overfitting and increase model performance, my next steps will be to find a more optimal way of addressing the class imbalance while modeling. Overfitting was rampant when I undersampled the training set, but it was also rampant in the LSTM model, even with a relatively high rate of recurrent dropouts in the neural network infrastructure. 
+
+Additionally, next steps can also include some feature decomposition / topic modeling. Maybe instead of only using the vectorized documents to train a model, a minimized feature space that retains the same amount of information can help prevent the model fitting the data points so granularly, giving our model higher bias. 
+
+With these next steps in mind, this model can then be scaled into an application that can take in text as input (ideally, reviews) and predict their label of 'Good', 'Neutral' or 'Bad'. This application can even be expanded: say a business wanted to then gauge the sentiments of their customers through social media comments. A tool that automizes both reading reviews and/or social media comments and gauging its sentiment would be tremendously helpful for businesses looking to make data driven decisions.
+
+
