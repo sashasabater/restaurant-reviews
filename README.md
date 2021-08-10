@@ -35,8 +35,10 @@ We can see that the majority of the actual 'Good' reviews were predicted to be '
 
 
 ## Next Steps / Future Discussion 
-In order to subdue overfitting and increase model performance, my next steps will be to find a more optimal way of addressing the class imbalance while modeling. Overfitting was rampant when I undersampled the training set, but it was also rampant in the LSTM model, even with a relatively high rate of recurrent dropouts in the neural network infrastructure. 
+While this LSTM model is a good start, in order to subdue overfitting and increase model performance, my next steps will be to find a more optimal way of addressing the class imbalance while modeling. Overfitting was rampant when I undersampled the training set, but it was also rampant in the LSTM model, even with a relatively high rate of recurrent dropouts in the neural network infrastructure. 
 
 Additionally, next steps can also include some feature decomposition / topic modeling. Maybe instead of only using the vectorized documents to train a model, a minimized feature space that retains the same amount of information can help prevent the model fitting the data points so granularly, giving our model higher bias. 
+
+With these next steps in mind, this model can then be scaled into an application that can take in text as input (ideally, reviews) and predict their label of 'Good', 'Neutral' or 'Bad'. This application can even be expanded: say a business wanted to then gauge the sentiments of their customers through social media comments. A tool that automizes both reading reviews and/or social media comments and gauging its sentiment would be tremendously helpful for businesses looking to make data driven decisions.
 
 
