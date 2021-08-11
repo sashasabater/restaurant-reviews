@@ -1,5 +1,5 @@
 # Sentiment Analysis through Restaurant Ratings
-Using Natural Language Processing to classifiy restaurant ratings 
+Using Natural Language Processing and Deep Supervised Learning to classifiy restaurant ratings 
 
 ## The Big Idea 
 If restaurant ratings can be accurately classified by text, then businesses would be able to gain a deeper understanding of the customer experience, or more specifically, what customers want out of their experience. A simple star rating from 1-5 is helpful, however it only goes so far--we do not know what the customer liked or didn't like. With a system that can classify ratings through text, a business owner can collect information about, say, which words or sentiments their business is trying to illicit. Businesses can make use of sentiment analysis to gauge customer sentiment at large.
@@ -31,11 +31,13 @@ The LSTM model had the highest performance for both training and testing, but on
 
 ![Confusion Matrix](./img/matrix.png)
 
-We can see that the majority of the actual 'Good' reviews were predicted to be 'Good' by the LSTM model. However, we can also see that the model typically mostly predicted 'Good' in general. For the purpose of this project, false 'good' reviews are worse than false 'bad' reviews: an actually badly rated restaurant with a false good review is less costly and in fact beneficial to the badly rated restaurant. However, a consistetly well rated restaurant receiving falsly classified bad reviews would be more detrimental, both for the business's reputation (and their faith in the model). Again, we have a class imbalance dilemma.
+We can see that the majority of the actual 'Good' reviews were predicted to be 'Good' by the LSTM model. However, we can also see that the model typically mostly predicted 'Good' in general. For the purpose of this project, false 'bad' reviews are worse than false 'good' reviews: an actually badly rated restaurant with a false good review is less costly and in fact beneficial to the badly rated restaurant. However, a consistetly well rated restaurant receiving falsly classified bad reviews would be more detrimental, both for the business's reputation (and their faith in the model). 
 
 
 ## Next Steps / Future Discussion 
-While this LSTM model is a good start, in order to subdue overfitting and increase model performance, my next steps will be to find a more optimal way of addressing the class imbalance while modeling. Overfitting was rampant when I undersampled the training set, but it was also rampant in the LSTM model, even with a relatively high rate of recurrent dropouts in the neural network infrastructure. 
+While this LSTM model is a good start, in order to subdue overfitting and increase model performance, my next steps will be to find a more optimal way of addressing the class imbalance while modeling. Overfitting was rampant when I undersampled the training set, but it was also rampant in the LSTM model, even with a relatively high rate of recurrent dropouts in the neural network infrastructure. Furthermore, overfitting could be eased by early stopping when training the LSTM model. Below we can see that at only the second epoch, the model's test performance begins to plateau.
+
+![Accuracy Plot](./img/accr.png)
 
 Additionally, next steps can also include some feature decomposition / topic modeling. Maybe instead of only using the vectorized documents to train a model, a minimized feature space that retains the same amount of information can help prevent the model fitting the data points so granularly, giving our model higher bias. 
 
